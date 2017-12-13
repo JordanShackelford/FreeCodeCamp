@@ -41,7 +41,7 @@ $(document).ready(function() {
           timeLeftFromLastSession = timeLeft;
           paused = false;
           timeLeft = (time * 60000) - timeSinceStarting;
-          if(timeLeft > 1000){
+          if(timeLeft > 0){
             if (currentMode === "work") {
               $("#workTime").text(millisToMinutesAndSeconds(timeLeft));
             } else if (currentMode === "break") {
@@ -49,11 +49,15 @@ $(document).ready(function() {
             }
           } else {
             stop();
+            alarmSound.play();
+            setTimeout(function(){
+              alarmSound.pause();
+            },5000);
           }
         } else {
           stop();
         }
-      },1000);
+      },500);
     }
   });
   $("#stop").click(function() {
