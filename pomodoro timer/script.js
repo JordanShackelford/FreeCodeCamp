@@ -17,9 +17,11 @@ $(document).ready(function() {
   updateBreakTime();
 
   $("#start").click(function() {
+
+    $("#tomato").addClass("animated shake");
+
     $(".timerButton").addClass("disabled");
     if (currentMode === "work") {
-      $("#workContainer .marching-ants").addClass("marching-ants-active");
       time = workTime;
     } else if (currentMode === "break") {
       $("#breakTimer").addClass("selectedTimer");
@@ -110,7 +112,6 @@ $(document).ready(function() {
   });
   
   function stop(){
-    $(".marching-ants-active").removeClass("marching-ants-active");
     clearInterval(intervalID);
     isRunning = false;
   }
